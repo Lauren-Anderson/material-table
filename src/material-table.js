@@ -19,6 +19,7 @@ export default class MaterialTable extends React.Component {
   dataManager = new DataManager();
 
   constructor(props) {
+    console.log('table constructor');
     super(props);
 
     const calculatedProps = this.getProps(props);
