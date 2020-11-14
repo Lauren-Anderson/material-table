@@ -106,13 +106,15 @@ export class MTableHeader extends React.Component {
       .sort((a, b) => a.tableData.columnOrder - b.tableData.columnOrder)
       .map((columnDef, index) => {
         let content = columnDef.title;
-
         if (this.props.draggable) {
           content = (
             <Draggable
               key={columnDef.tableData.id}
               draggableId={columnDef.tableData.id.toString()}
               index={index}
+              isDragDisabled={
+                !(this.props.draggable && !this.props.draggableRows)
+              }
             >
               {(provided, snapshot) => (
                 <div
@@ -240,6 +242,7 @@ export class MTableHeader extends React.Component {
       </>
     );
   }
+
   renderSelectionHeader() {
     const selectionWidth = CommonValues.selectionMaxWidth(
       this.props,
@@ -273,6 +276,23 @@ export class MTableHeader extends React.Component {
     );
   }
 
+  renderDraggableHeaderCell() {
+    const draggableOptions = this.props.options.draggableRowsOptions;
+    return (
+      <TableCell
+        padding="none"
+        key="key-drag-column"
+        className={this.props.classes.header}
+        style={{
+          ...this.props.headerStyle,
+          width: draggableOptions.dragCellWidth,
+        }}
+      >
+        {draggableOptions.dragHeaderContent}
+      </TableCell>
+    );
+  }
+
   renderDetailPanelColumnCell() {
     return (
       <TableCell
@@ -288,6 +308,13 @@ export class MTableHeader extends React.Component {
     const headers = this.renderHeader();
     if (this.props.hasSelection) {
       headers.splice(0, 0, this.renderSelectionHeader());
+    }
+
+    if (
+      this.props.options.draggableRows &&
+      this.props.options.draggableRowsOptions.draggableCell
+    ) {
+      headers.splice(0, 0, this.renderDraggableHeaderCell());
     }
 
     if (this.props.showActionsColumn) {
