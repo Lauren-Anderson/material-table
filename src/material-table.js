@@ -963,6 +963,8 @@ export default class MaterialTable extends React.Component {
     const props = this.getProps();
 
     return (
+      <>
+      <p>ELVES</p>
       <DragDropContext
         onDragEnd={this.onDragEnd}
         nonce={props.options.cspNonce}
@@ -1173,6 +1175,7 @@ export default class MaterialTable extends React.Component {
             )}
         </props.components.Container>
       </DragDropContext>
+      </>
     );
   }
 }
