@@ -20,6 +20,7 @@ export default class MaterialTable extends React.Component {
   draggableRowsIdentifier = "draggable-rows";
 
   constructor(props) {
+     /* eslint-disable-next-line no-console */
     console.log('table constructor');
     /* eslint-disable-next-line no-console */
     console.log(
