@@ -71,7 +71,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     var _this;
 
     (0, _classCallCheck2["default"])(this, MaterialTable);
-    console.log('table constructor');
     _this = _super.call(this, _props);
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "dataManager", new _dataManager["default"]());
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "isRemoteData", function (props) {
@@ -581,6 +580,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
 
       return "calc(" + result.join(" + ") + ")";
     });
+    console.log('table constructor');
 
     var calculatedProps = _this.getProps(_props);
 
