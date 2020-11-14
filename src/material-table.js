@@ -71,6 +71,7 @@ export default class MaterialTable extends React.Component {
   }
 
   setDataManagerFields(props, isInit) {
+    console.log(1);
     let defaultSortColumnIndex = -1;
     let defaultSortDirection = "";
     if (props && props.options.sorting !== false) {
@@ -130,7 +131,7 @@ export default class MaterialTable extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // const propsChanged = Object.entries(this.props).reduce((didChange, prop) => didChange || prop[1] !== prevProps[prop[0]], false);
+    console.log(2);
 
     const fixedPrevColumns = this.cleanColumns(prevProps.columns);
     const fixedPropsColumns = this.cleanColumns(this.props.columns);
@@ -341,6 +342,7 @@ export default class MaterialTable extends React.Component {
   };
 
   onChangeOrder = (orderBy, orderDirection) => {
+    console.log(3);
     const newOrderBy = orderDirection === "" ? -1 : orderBy;
     this.dataManager.changeOrder(newOrderBy, orderDirection);
 
@@ -383,6 +385,7 @@ export default class MaterialTable extends React.Component {
   };
 
   onChangeRowsPerPage = (event) => {
+    console.log(4);
     const pageSize = event.target.value;
 
     this.dataManager.changePageSize(pageSize);
@@ -407,6 +410,7 @@ export default class MaterialTable extends React.Component {
   };
 
   onDragEnd = (result) => {
+    console.log(5);
     if (!result || !result.source || !result.destination) return;
     this.dataManager.changeByDrag(result);
     this.setState(this.dataManager.getRenderState(), () => {
