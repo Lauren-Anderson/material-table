@@ -24,10 +24,6 @@ export class MTableHeader extends React.Component {
     };
   }
 
-  // shouldComponentUpdate(nextProps, nextState){
-  //   return !equal(nextProps, this.props) || !equal(nextState, this.state);
-  // }
-
   componentDidMount() {
     document.addEventListener("mousemove", this.handleMouseMove);
     document.addEventListener("mouseup", this.handleMouseUp);
@@ -224,6 +220,8 @@ export class MTableHeader extends React.Component {
     };
     const width = CommonValues.actionsColumnWidth(this.props);
     return (
+      <>
+      <p>HOBBITS</p>
       <TableCell
         key="key-actions-column"
         padding="checkbox"
@@ -239,6 +237,7 @@ export class MTableHeader extends React.Component {
           {localization.actions}
         </TableSortLabel>
       </TableCell>
+      </>
     );
   }
   renderSelectionHeader() {
